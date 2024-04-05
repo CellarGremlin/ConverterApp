@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import YoutubeToMP3Route from "./routes/YoutubeToMP3Route.js";
+import YoutubeToMP3Route from "../routes/YoutubeToMP3Route.js";
 import dotenv from "dotenv"
 
 dotenv.config()
@@ -24,6 +24,8 @@ app.get( "/", ( req, res ) => {
 
 app.use( "/convertMP3", YoutubeToMP3Route );
 
-app.listen( port, () => {
-    console.log(`App Running On Port: ${ port }`);
-} );
+// VERCEL DEPLOYMENT IS SERVERLESS
+// app.listen( port, () => {
+//     console.log(`App Running On Port: ${ port }`);
+// } );
+export default app;
