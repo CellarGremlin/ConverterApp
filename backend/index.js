@@ -7,7 +7,7 @@ dotenv.config()
 
 const app = express();
 
-const PORT = process.env.PORT || 3333;
+const port = process.env.PORT || 3333;
 
 // MIDDLEWARE
 app.use( express.json() );
@@ -24,6 +24,6 @@ app.get( "/", ( req, res ) => {
 
 app.use( "/convertMP3", YoutubeToMP3Route );
 
-app.listen( PORT, () => {
-    console.log(`App Running On Port: ${ PORT }`);
+app.listen( port, () => {
+    console.log(`App Running On Port: ${ port }`);
 } );
