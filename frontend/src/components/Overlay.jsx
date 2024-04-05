@@ -1,4 +1,4 @@
-import { BiAlbum } from "react-icons/bi";
+import { BiAlbum } from "react-icons/bi"
 import axios from "axios"
 import { useState } from "react"
 
@@ -12,15 +12,20 @@ export default function Overlay() {
     } )
     const [ isSuccess, setIsSuccess ] = useState( null )
     const [ errorMessage, setErrorMessage ] = useState( "" )
+    const [ isLoading, setIsLoading ] = useState( false )
 
-    const converterUrl = "http://localhost:3333/convertMP3"
+    const converterUrl = "https://converterapp-server.onrender.com/convertMP3"
 
     const handleSubmit = async ( e ) => {
         e.preventDefault()
 
+        setIsLoading( true )
+
         axios
             .post( converterUrl, { videoURL: formData.videoURL } )
             .then( ( response ) => {
+                setIsLoading( false )
+
                 setErrorMessage( prevError => response.data.message )
                 setIsSuccess( prevIsSuccess => response.data.success )
       
@@ -71,6 +76,15 @@ export default function Overlay() {
                             <BiAlbum/> 
                         </button>
                     </form>
+
+                    {/* LOADER */}
+                    { isLoading ? (
+                        <div className="flex justify-center items-center pt-4">
+                            <img src="/images/spinner.svg"/>
+                        </div>
+                    ) : (
+                        <div></div>
+                    ) }
 
                     {/* ERROR MESSAGE: invalid URL */}
                     { isSuccess ? (
