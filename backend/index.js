@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import YoutubeToMP3Route from "../routes/YoutubeToMP3Route.js";
+import YoutubeToMP3Route from "./routes/YoutubeToMP3Route.js";
 import dotenv from "dotenv"
 
 dotenv.config()
