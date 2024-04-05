@@ -13,7 +13,7 @@ export default function Overlay() {
     const [ isSuccess, setIsSuccess ] = useState( null )
     const [ errorMessage, setErrorMessage ] = useState( "" )
 
-    const converterUrl = process.env.NODE_ENV === "production" ? "http://randomstuffs" : "http://localhost:3333/convertMP3"
+    const converterUrl = "http://localhost:3333/convertMP3"
 
     const handleSubmit = async ( e ) => {
         e.preventDefault()
